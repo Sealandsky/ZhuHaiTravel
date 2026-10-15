@@ -83,9 +83,9 @@ body {
   -webkit-tap-highlight-color: transparent;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   body {
-    padding: max(2rem, calc(1.5rem + env(safe-area-inset-top, 0px))) max(1rem, env(safe-area-inset-right, 0px)) max(5.5rem, calc(4.5rem + env(safe-area-inset-bottom, 0px))) max(1rem, env(safe-area-inset-left, 0px));
+    padding: max(2rem, calc(1.5rem + env(safe-area-inset-top, 0px))) max(1rem, env(safe-area-inset-right, 0px)) max(6.75rem, calc(5.75rem + env(safe-area-inset-bottom, 0px))) max(1rem, env(safe-area-inset-left, 0px));
   }
 }
 
@@ -721,43 +721,50 @@ html[lang="zh"] .bio-section {
   transform: scale(0.96);
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .view-all.pill {
-    bottom: calc(0.875rem + env(safe-area-inset-bottom, 0px));
-    left: 0.875rem;
-    font-size: 0.9375rem; /* 15px */
-    padding: 0.375rem 0.75rem;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    bottom: max(1.125rem, calc(0.75rem + env(safe-area-inset-bottom, 0px)));
+    left: max(1rem, env(safe-area-inset-left, 0px));
+    height: 2.875rem; /* 46px Apple HIG touch target */
+    padding: 0 1.25rem;
+    font-size: 1.05rem; /* ~16.8px */
+    font-weight: 550;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.06);
   }
 
   .settings.pill-split {
-    bottom: calc(0.875rem + env(safe-area-inset-bottom, 0px));
-    right: 0.875rem;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    bottom: max(1.125rem, calc(0.75rem + env(safe-area-inset-bottom, 0px)));
+    right: max(1rem, env(safe-area-inset-right, 0px));
+    height: 2.875rem; /* 46px */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.06);
   }
 
   .settings.pill-split > button,
   .settings.pill-split > a {
-    font-size: 0.9375rem; /* 15px */
-    padding: 0.375rem 0.35rem;
-    width: 3.75rem;
+    height: 100%;
+    font-size: 1.05rem; /* ~16.8px */
+    font-weight: 550;
+    padding: 0 0.5rem;
+    width: 4.65rem; /* ~74px */
   }
 }
 
 @media (max-width: 360px) {
   .view-all.pill {
-    left: 0.5rem;
-    padding: 0.35rem 0.6rem;
-    font-size: 0.875rem;
+    left: 0.65rem;
+    padding: 0 0.85rem;
+    font-size: 0.95rem;
+    height: 2.65rem;
   }
   .settings.pill-split {
-    right: 0.5rem;
+    right: 0.65rem;
+    height: 2.65rem;
   }
   .settings.pill-split > button,
   .settings.pill-split > a {
-    width: 3.25rem;
-    padding: 0.35rem 0.2rem;
-    font-size: 0.875rem;
+    width: 4rem;
+    font-size: 0.95rem;
   }
 }
+
 
