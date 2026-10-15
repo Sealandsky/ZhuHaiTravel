@@ -345,6 +345,9 @@ function closeGallery(targetIdx) {
   singleView.style.display = "block";
   singleView.style.opacity = "0";
 
+  // 點擊進入大圖模式時，立即回到頂部
+  window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+
   // 更新聚焦舞台建築與相關文案
   updateAll(false);
 
