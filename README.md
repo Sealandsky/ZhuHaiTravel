@@ -1,6 +1,5 @@
-# ZHTravel — 自更新個人打卡網站 (pengzhe.ng 復刻項目)
+# ZHTravel — 自更新個人打卡網站
 
-這是一個基於 **Astro (SSG + Islands)** 構建的「自更新個人打卡網站（Living Website）」完整模板，復刻了 [pengzhe.ng/cn](https://www.pengzhe.ng/cn) 的核心設計與自動化打卡架構。
 
 ## ✨ 核心特性
 
