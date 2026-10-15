@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-26",
+  "dateZh": "10月26日",
+  "dateEn": "Oct 26",
+  "relZh": "10月26日",
+  "relEn": "on Oct 26",
+  "place": "東澳島（蜜月閣海天懸崖亭）",
+  "titleZh": "東澳島",
+  "subZh": "蜜月閣海天懸崖亭",
+  "titleEn": "Dong'ao Island",
+  "subEn": "Honeymoon Cliff Pavilion",
+  "cityZh": "珠海",
+  "cityEn": "Zhuhai",
+  "preset": "island",
+  "guideZh": "萬山群島中最具浪漫詩意的璀璨明珠，東澳島以其保留原始純淨的「鑽石沙灘」南沙灣與險峻的懸崖礁石聞名於世。而巍峨聳立於蜜月山巔的花崗岩懸崖之上的「蜜月閣」，則是島上的最高點與精神象徵。這座三層古典八角重檐閣樓飛檐翹角、朱柱碧瓦，閣內高懸「蜜月鐘」，傳說情侶在此敲鐘祈福可許下一生誓願。沿著雕欄玉砌的石階棧道蜿蜒登頂，微風拂過，碧海湧動白浪，360度環視萬頃碧波與嶙峋海蝕奇觀，海天一色無比遼闊。入夜後閣樓飛檐紅燈籠亮起，在墨藍夜空與深邃海濤的襯托下宛若蓬萊仙境。",
+  "guideEn": "The jewel of the Wanshan Archipelago, Dong'ao Island is famed for its crystalline turquoise waters and powder-soft 'Diamond Beach' at Nansha Bay. Perched high upon the granite coastal cliff summit of Honeymoon Mountain stands the iconic Honeymoon Pavilion. Built with classical Lingnan flying eaves, cinnabar columns, and an auspicious ceremonial bronze bell inside, it offers a dramatic panoramic vantage point across the South China Sea. Clifftop stone pathways wind past ancient maritime foliage down to crashing azure ocean breakers, creating one of Zhuhai's most enchanting romantic island sanctuaries.",
+  "dayImage": "/images/dongao-island-day.webp",
+  "nightImage": "/images/dongao-island-night.webp",
+  "coordinates": {
+    "lat": 22.0156,
+    "lng": 113.7123
+  },
+  "companions": [],
+  "guideDetailsZh": [
+    { "label": "門票預約", "value": "島嶼免費開放 / 香洲港或橫琴碼頭乘船（往返約 ¥170–¥200）" },
+    { "label": "開放時間", "value": "全天開放；高速客船通常 08:30 – 16:50 運營" },
+    { "label": "建議用時", "value": "1 – 2 天（深度海島度假與徒步登山）" },
+    { "label": "最佳時段", "value": "清晨登頂蜜月閣觀海上日出，午後在南沙灣踏浪衝浪" },
+    { "label": "地理位置", "value": "珠海市萬山海洋開發試驗區東澳島蜜月山頂" }
+  ],
+  "guideDetailsEn": [
+    { "label": "Tickets", "value": "Island access free / Ferry from Xiangzhou or Hengqin (~¥170–¥200 roundtrip)" },
+    { "label": "Hours", "value": "Island open 24/7; Ferry schedules approx. 08:30 – 16:50" },
+    { "label": "Duration", "value": "1 – 2 Days (Island getaway & hiking)" },
+    { "label": "Best Time", "value": "Early dawn for clifftop sunrise, afternoon for beach surf" },
+    { "label": "Location", "value": "Summit of Honeymoon Mountain, Dong'ao Island, Zhuhai" }
+  ]
+}

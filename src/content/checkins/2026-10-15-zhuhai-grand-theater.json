@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-15",
+  "dateZh": "10月15日",
+  "dateEn": "Oct 15",
+  "relZh": "10月15日",
+  "relEn": "on Oct 15",
+  "place": "珠海大劇院（日月貝）",
+  "titleZh": "珠海大劇院",
+  "subZh": "日月貝",
+  "titleEn": "Zhuhai Grand Theater",
+  "subEn": "Sun & Moon Shells",
+  "cityZh": "珠海",
+  "cityEn": "Zhuhai",
+  "preset": "cinema",
+  "guideZh": "中國唯一建設在海島上的大劇院，坐落於野狸島海韻城畔。設計靈感源自名畫《維納斯的誕生》與名句「珠生於貝，貝生於海」，由一大一小兩座通透白色貝殼組成。白天如白玉雕塑浮於碧波之上，入夜後泛光照明流光溢彩，是情侶路騎行、觀賞海面日落與浪漫夜景的城市地標。",
+  "guideEn": "The only opera house in China built on an island, the Zhuhai Grand Theater is situated on Yeli Island. Inspired by 'The Birth of Venus', it features two soaring translucent white shell structures rising from the sea. Glowing with dynamic illumination at night, it is Zhuhai's crown jewel for seaside cycling, sunset viewing, and cultural performances.",
+  "dayImage": "/images/zhuhai-opera-day.webp",
+  "nightImage": "/images/zhuhai-opera-night.webp",
+  "coordinates": {
+    "lat": 22.2768,
+    "lng": 113.5881
+  },
+  "companions": [],
+  "guideDetailsZh": [
+    { "label": "門票預約", "value": "免費進入（劇場內需演出票）" },
+    { "label": "開放時間", "value": "海韻城及外圍全天開放" },
+    { "label": "建議用時", "value": "1.5 – 2 小時" },
+    { "label": "最佳時段", "value": "18:30–21:00 日落晚霞與亮燈" },
+    { "label": "地理位置", "value": "香洲區野狸島情侶中路" }
+  ],
+  "guideDetailsEn": [
+    { "label": "Tickets", "value": "Free entry (Theatre requires show ticket)" },
+    { "label": "Hours", "value": "All day (Outdoor & Sea World mall)" },
+    { "label": "Duration", "value": "1.5 – 2 Hours" },
+    { "label": "Best Time", "value": "18:30–21:00 Sunset & Illumination" },
+    { "label": "Location", "value": "Yeli Island, Lovers' Middle Road, Xiangzhou" }
+  ]
+}

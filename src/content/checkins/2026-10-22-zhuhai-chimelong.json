@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-22",
+  "dateZh": "10月22日",
+  "dateEn": "Oct 22",
+  "relZh": "10月22日",
+  "relEn": "on Oct 22",
+  "place": "珠海長隆度假區（巨型鯨鯊館）",
+  "titleZh": "珠海長隆度假區",
+  "subZh": "巨型鯨鯊館",
+  "titleEn": "Zhuhai Chimelong Resort",
+  "subEn": "Whale Shark Aquarium",
+  "cityZh": "珠海",
+  "cityEn": "Zhuhai",
+  "preset": "ocean",
+  "guideZh": "長隆海洋王國的地標性建築與世界頂級海洋奇觀，高達 63 米的巨型藍鯨鯊雕塑躍出藍天，成為橫琴海畔最震撼的視覺標誌。展館內部擁有榮獲多項健力士世界紀錄的超巨型水族亞克力玻璃觀賞屏，蓄水量逾兩萬噸。漫步於幽藍清澈的巨幕與拱形海底隧道下，數萬條珍稀海洋生靈悠然洄游，巨大的鯨鯊舒展雙鰭宛若深海巡禮，蝠鱝輕盈掠過頭頂，帶來彷彿置身無垠大洋深處的奇幻沉浸體驗。夜幕降臨，鯨鯊雕塑投影與璀璨的煙花幻彩大巡遊交相輝映，是珠海不可錯過的夢幻勝境。",
+  "guideEn": "The signature icon of Chimelong Ocean Kingdom, featuring a colossal 63-meter leaping whale shark sculpture that commands the Hengqin skyline. Housing one of the world's largest aquarium viewing acrylic panels with over 20,000 tons of water, it offers an awe-inspiring underwater realm where majestic whale sharks, manta rays, and tens of thousands of exotic marine creatures glide peacefully above. By night, spectacular projection mapping on the sculpture combines with lake fireworks to deliver an unforgettable marine fantasy.",
+  "dayImage": "/images/zhuhai-chimelong-day.webp",
+  "nightImage": "/images/zhuhai-chimelong-night.webp",
+  "coordinates": {
+    "lat": 22.1005,
+    "lng": 113.5358
+  },
+  "companions": [],
+  "guideDetailsZh": [
+    { "label": "門票預約", "value": "海洋王國全票約 ¥395 起 / 需實名預訂" },
+    { "label": "開放時間", "value": "10:00 – 20:30（煙花秀通常 20:00）" },
+    { "label": "建議用時", "value": "全天遊覽（約 6 – 8 小時）" },
+    { "label": "最佳時段", "value": "午後觀賞深海餵食秀，夜間觀看海洋幻彩煙花盛典" },
+    { "label": "地理位置", "value": "珠海市香洲區橫琴新區環島東路長隆大道" }
+  ],
+  "guideDetailsEn": [
+    { "label": "Tickets", "value": "From approx. ¥395 / Real-name booking" },
+    { "label": "Hours", "value": "10:00 – 20:30 (Night Fireworks at 20:00)" },
+    { "label": "Duration", "value": "Full Day (6 – 8 Hours)" },
+    { "label": "Best Time", "value": "Afternoon feeding show & evening fireworks finale" },
+    { "label": "Location", "value": "Chimelong Ave, Hengqin New District, Zhuhai" }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-24",
+  "dateZh": "10月24日",
+  "dateEn": "Oct 24",
+  "relZh": "10月24日",
+  "relEn": "on Oct 24",
+  "place": "景山公園（景山索道與峰頂觀景台）",
+  "titleZh": "景山公園",
+  "subZh": "景山索道與峰頂觀景台",
+  "titleEn": "Jingshan Park",
+  "subEn": "Scenic Cableway & Summit Pavilion",
+  "cityZh": "珠海",
+  "cityEn": "Zhuhai",
+  "preset": "mountain",
+  "guideZh": "依傍情侶中路、聳立於香爐灣畔的城市制高點，景山公園將翠綠的山林野趣與浩瀚海景無縫融合。乘坐標誌性的亮黃色復古纜車緩緩穿過青翠林海直達峰頂，眼前豁然開朗：香爐灣沙灘的優美弧線、情侶路如帶延伸、珠海大劇院日月貝與遠處橫跨伶仃洋的港珠澳大橋盡收眼底。峰頂觀景閣設有 360 度全景觀景台與觀鳥望遠鏡，下山更可體驗驚險刺激的山地衝鋒車，沿著千米不銹鋼滑道風馳電掣穿越山間密林，是俯瞰珠海「山、海、城」一體壯麗全景的最佳打卡地標。",
+  "guideEn": "Perched majestically beside Lovers' Road and Xianglu Bay, Jingshan Park is the prime mountain vantage point embracing Zhuhai's urban panorama and sea vistas. Ascend the lush hillside via the iconic bright-yellow vintage cableway gondolas to the summit observation terrace. From the top, gaze upon Xianglu Bay's golden crescent, the Sun & Moon Shell theater, and the sprawling Hong Kong-Zhuhai-Macao Bridge. For the descent, embark on the thrilling alpine toboggan slide that swoops down through verdant subtropical forest paths.",
+  "dayImage": "/images/jingshan-park-day.webp",
+  "nightImage": "/images/jingshan-park-night.webp",
+  "coordinates": {
+    "lat": 22.2612,
+    "lng": 113.5786
+  },
+  "companions": [],
+  "guideDetailsZh": [
+    { "label": "門票預約", "value": "公園免費入園 / 索道滑道套票約 ¥75–¥90" },
+    { "label": "開放時間", "value": "公園 06:00 – 22:00；索道 09:00 – 17:30" },
+    { "label": "建議用時", "value": "1.5 – 2.5 小時（纜車登頂與俯瞰全景）" },
+    { "label": "最佳時段", "value": "清晨晴朗遠眺海灣，或下午 16:30 觀日落晚霞" },
+    { "label": "地理位置", "value": "珠海市香洲區吉大街道海濱北路景山公園" }
+  ],
+  "guideDetailsEn": [
+    { "label": "Tickets", "value": "Park entry free / Cableway & Toboggan combo ~¥75–¥90" },
+    { "label": "Hours", "value": "Park 06:00 – 22:00; Cableway 09:00 – 17:30" },
+    { "label": "Duration", "value": "1.5 – 2.5 Hours" },
+    { "label": "Best Time", "value": "Clear morning for bay views, or 16:30 for sunset glow" },
+    { "label": "Location", "value": "Haibin North Road, Jida, Xiangzhou, Zhuhai" }
+  ]
+}

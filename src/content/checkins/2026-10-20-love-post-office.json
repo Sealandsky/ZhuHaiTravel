@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-20",
+  "dateZh": "10月20日",
+  "dateEn": "Oct 20",
+  "relZh": "10月20日",
+  "relEn": "on Oct 20",
+  "place": "愛情郵局（愛情燈塔）",
+  "titleZh": "愛情郵局",
+  "subZh": "愛情燈塔",
+  "titleEn": "Love Post Office",
+  "subEn": "Love Lighthouse",
+  "cityZh": "珠海",
+  "cityEn": "Zhuhai",
+  "preset": "park",
+  "guideZh": "矗立於情侶中路海濱泳場北側的礁石之畔，是一座兼具郵政文化、海濱休閒與極致浪漫氛圍的城市地標。純白漸收的歐式圓形塔身、深色拱門與頂部金黃的守望燈室，沿著懸挑的圓形親水步道延伸至海天一色之間。白天憑欄遠眺港珠澳大橋如巨龍臥波，黃昏時分晚霞漫天、潮聲陣陣，夜幕降臨後燈塔暖光如炬照亮海面，是情侶漫步、寄出浪漫明信片與海邊打卡的必遊勝地。",
+  "guideEn": "Standing gracefully at the edge of the coastal rocks along Lovers' Middle Road beside Haibin Beach, the Love Post Office Lighthouse is a romantic coastal landmark of Zhuhai. Featuring a tapering white European-style tower, dark archways, and a radiant beacon glowing from its crown, the lighthouse extends out onto a circular seaside promenade over the waves. By day, visitors can gaze toward the Hong Kong-Zhuhai-Macao Bridge stretching across the sea; at twilight, sunset glow washes over the shore before the warm beacon illuminates the sea, making it an essential destination for romantic strolls and coastal memories.",
+  "dayImage": "/images/love-post-office-day.webp",
+  "nightImage": "/images/love-post-office-night.webp",
+  "coordinates": {
+    "lat": 22.2572,
+    "lng": 113.5932
+  },
+  "companions": [],
+  "guideDetailsZh": [
+    { "label": "門票預約", "value": "免費參觀（免預約，戶外景點）" },
+    { "label": "開放時間", "value": "燈塔外觀全天開放；郵局展廳 09:00 – 21:00" },
+    { "label": "建議用時", "value": "1 – 2 小時" },
+    { "label": "最佳時段", "value": "傍晚日落霞光（17:30–18:30）及夜間亮燈" },
+    { "label": "地理位置", "value": "香洲區情侶中路503號海濱泳場北側" }
+  ],
+  "guideDetailsEn": [
+    { "label": "Tickets", "value": "Free admission (No reservation needed)" },
+    { "label": "Hours", "value": "Lighthouse open 24/7; Post office 09:00 – 21:00" },
+    { "label": "Duration", "value": "1 – 2 Hours" },
+    { "label": "Best Time", "value": "Sunset glow (17:30–18:30) & evening illumination" },
+    { "label": "Location", "value": "No. 503 Lovers' Middle Rd (North of Haibin Beach)" }
+  ]
+}

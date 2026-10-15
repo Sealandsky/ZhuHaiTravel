@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-27",
+  "dateZh": "今天",
+  "dateEn": "Today",
+  "relZh": "剛剛",
+  "relEn": "just now",
+  "place": "唐家共樂園（田字綠亭與百年私園）",
+  "titleZh": "唐家共樂園",
+  "subZh": "田字綠亭與百年私園",
+  "titleEn": "Tangjia Gongle Garden",
+  "subEn": "Tian-Shaped Green Pavilion",
+  "cityZh": "珠海",
+  "cityEn": "Zhuhai",
+  "preset": "garden",
+  "guideZh": "近代嶺南名園的精華縮影，原為中華民國首任內閣總理唐紹儀的私家花園，後秉持「與民共樂」之精神無私捐贈給當地大眾。園內最負盛名的建築當屬造型精巧奇特的「田字綠亭」——整座兩層古典亭閣巧妙構建為漢字「田」之佈局，碧綠琉璃筒瓦重檐歇山頂與朱紅立柱相映成趣，上下兩層迴廊曲折、木雕欄杆細緻入微。亭前靜臥著融合中西風情的古樸法式石造噴泉，四周環抱著自東南亞及歐美引種的百年古荔枝林、黑羅漢松與參天古木。漫步於青石板路上，古意盎然、清幽深遠，承載著珠海近代中西文化交融與深厚的人文底蘊。",
+  "guideEn": "A magnificent jewel of modern Lingnan classical landscape gardens, Gongle Garden was originally the private estate of Tang Shaoyi, the first Premier of the Republic of China, who magnanimously donated it to the public under the motto 'Joy Shared with All'. Its crowning architectural wonder is the historic 'Tian'-shaped Green Pavilion, ingeniously framed in the floor plan of the Chinese character '田'. Topped with jade-green glazed porcelain tiles and supported by vermilion timber columns, it faces a century-old French classical stone fountain and stands encircled by rare exotic botanicals and ancient lychee groves. It remains an enduring emblem of Zhuhai's rich cultural heritage.",
+  "dayImage": "/images/gongle-garden-day.webp",
+  "nightImage": "/images/gongle-garden-night.webp",
+  "coordinates": {
+    "lat": 22.3618,
+    "lng": 113.5855
+  },
+  "companions": [],
+  "guideDetailsZh": [
+    { "label": "門票預約", "value": "公園免費開放 / 免預約入園" },
+    { "label": "開放時間", "value": "08:30 – 17:30（全年開放）" },
+    { "label": "建議用時", "value": "1.5 – 2.5 小時（名人故居與嶺南名園巡禮）" },
+    { "label": "最佳時段", "value": "上午 09:00–11:00 晨光穿透百年古樹林蔭，幽靜怡人" },
+    { "label": "地理位置", "value": "珠海市高新區唐家灣鎮山房路 99 號" }
+  ],
+  "guideDetailsEn": [
+    { "label": "Tickets", "value": "Free admission / No reservation needed" },
+    { "label": "Hours", "value": "08:30 – 17:30 (Open daily)" },
+    { "label": "Duration", "value": "1.5 – 2.5 Hours" },
+    { "label": "Best Time", "value": "Morning (09:00–11:00) for soft sunlight filtering through century-old trees" },
+    { "label": "Location", "value": "No. 99 Shanfang Road, Tangjiawan, High-tech Zone, Zhuhai" }
+  ]
+}

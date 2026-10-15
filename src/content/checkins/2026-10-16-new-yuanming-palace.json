@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-16",
+  "dateZh": "10月16日",
+  "dateEn": "Oct 16",
+  "relZh": "10月16日",
+  "relEn": "on Oct 16",
+  "place": "珠海圓明新園（正大光明殿）",
+  "titleZh": "珠海圓明新園",
+  "subZh": "正大光明殿",
+  "titleEn": "New Yuanming Palace",
+  "subEn": "Hall of Zhengda Guangming",
+  "cityZh": "珠海",
+  "cityEn": "Zhuhai",
+  "preset": "park",
+  "guideZh": "坐落於石景山下，按北京圓明園被焚毀前的盛時景觀 1:1 比例匠心復建。正大光明殿作為全園中軸線上的首要正殿，飛檐翹角、金碧輝煌，前臨漢白玉金水橋與威武石獅，殿內高懸御筆匾額，周圍環抱著江南福海湖景與西洋樓石柱群，盡顯清代皇家園林的雄偉氣象。",
+  "guideEn": "Set at the foot of Shijing Mountain, New Yuanming Palace is a 1:1 recreation of Beijing's Old Summer Palace before its destruction. The Hall of Zhengda Guangming serves as the central throne hall along the imperial axis, featuring sweeping golden eaves, white marble bridges, and imperial lions, surrounded by scenic lakes and Baroque-style Western Pavilions.",
+  "dayImage": "/images/new-yuanming-palace-day.webp",
+  "nightImage": "/images/new-yuanming-palace-night.webp",
+  "coordinates": {
+    "lat": 22.2415,
+    "lng": 113.5350
+  },
+  "companions": [],
+  "guideDetailsZh": [
+    { "label": "門票預約", "value": "免費入園（免預約）" },
+    { "label": "開放時間", "value": "09:00 – 17:30（17:00 停止入園）" },
+    { "label": "建議用時", "value": "2 – 3 小時" },
+    { "label": "最佳時段", "value": "晴天上午或午後漫步" },
+    { "label": "地理位置", "value": "香洲區九洲大道中段蘭埔路" }
+  ],
+  "guideDetailsEn": [
+    { "label": "Tickets", "value": "Free admission (No reservation needed)" },
+    { "label": "Hours", "value": "09:00 – 17:30 (Last entry 17:00)" },
+    { "label": "Duration", "value": "2 – 3 Hours" },
+    { "label": "Best Time", "value": "Sunny morning or afternoon walk" },
+    { "label": "Location", "value": "Lanpu Road, Central Jiuzhou Ave, Xiangzhou" }
+  ]
+}

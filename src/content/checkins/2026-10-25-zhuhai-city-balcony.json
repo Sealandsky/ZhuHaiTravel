@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-25",
+  "dateZh": "10月25日",
+  "dateEn": "Oct 25",
+  "relZh": "10月25日",
+  "relEn": "on Oct 25",
+  "place": "珠海城市陽台（香爐灣退台觀景台）",
+  "titleZh": "珠海城市陽台",
+  "subZh": "香爐灣退台觀景台",
+  "titleEn": "Zhuhai City Balcony",
+  "subEn": "Xianglu Bay Cascading Terraces",
+  "cityZh": "珠海",
+  "cityEn": "Zhuhai",
+  "preset": "coast",
+  "guideZh": "依山傍海、臨風聽潮的城市會客廳，珠海城市陽台坐落於香爐灣畔的核心地段，完美連接景山公園與情侶路沙灘。建築大膽採用順應山勢的「退台式」立體流線設計，層層退落的綠意空中露台、純白浪潮欄杆與懸挑觀海平台巧妙交錯，宛如凝固在海邊的巨大海浪。漫步於露天步道上，海風拂面，腳下是香爐灣細膩的金色沙灘與浪花，對面則是佇立海中的珠海漁女。夜幕低垂時，退台燈帶宛如靈動光瀑順勢而下，配合濱海市集、景觀咖啡廳與悠揚海浪，是珠海最具浪漫氣息的生活休閒打卡地標。",
+  "guideEn": "Perched dramatically where lush green hills meet the sea at Xianglu Bay, the Zhuhai City Balcony is the city's premier oceanfront living room. Its award-winning cascading terrace architecture steps down organically toward the coastline, featuring sweeping white parapets reminiscent of rhythmic ocean waves and cantilevered glass viewing platforms. Offering seamless pedestrian connections between Jingshan Park and Lovers' Road beach, visitors can unwind at seaside open-air cafes while gazing across the bay at the Zhuhai Fisher Girl statue and the sparkling blue sea.",
+  "dayImage": "/images/zhuhai-city-balcony-day.webp",
+  "nightImage": "/images/zhuhai-city-balcony-night.webp",
+  "coordinates": {
+    "lat": 22.2685,
+    "lng": 113.5822
+  },
+  "companions": [],
+  "guideDetailsZh": [
+    { "label": "門票預約", "value": "免費開放 / 全天免預約通行" },
+    { "label": "開放時間", "value": "公共觀景平台 24 小時開放；商業街區 10:00 – 22:00" },
+    { "label": "建議用時", "value": "1.5 – 2.5 小時（露天觀景、下午茶與沙灘散步）" },
+    { "label": "最佳時段", "value": "下午 17:00 伴隨落日漫步至夜晚天階亮燈" },
+    { "label": "地理位置", "value": "珠海市香洲區情侶中路海濱公園旁（城市陽台）" }
+  ],
+  "guideDetailsEn": [
+    { "label": "Tickets", "value": "Free admission / No reservation required" },
+    { "label": "Hours", "value": "Observation Terraces 24/7; Retail & Dining 10:00 – 22:00" },
+    { "label": "Duration", "value": "1.5 – 2.5 Hours" },
+    { "label": "Best Time", "value": "Late afternoon (17:00) into sunset and evening light glow" },
+    { "label": "Location", "value": "Lovers' Middle Road, Xianglu Bay, Xiangzhou, Zhuhai" }
+  ]
+}

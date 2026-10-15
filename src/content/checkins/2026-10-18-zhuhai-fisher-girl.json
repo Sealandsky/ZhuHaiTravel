@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-18",
+  "dateZh": "10月18日",
+  "dateEn": "Oct 18",
+  "relZh": "10月18日",
+  "relEn": "on Oct 18",
+  "place": "珠海漁女",
+  "titleZh": "珠海漁女",
+  "subZh": "",
+  "titleEn": "Zhuhai Fisher Girl",
+  "subEn": "",
+  "cityZh": "珠海",
+  "cityEn": "Zhuhai",
+  "preset": "park",
+  "guideZh": "珠海最負盛名的城市地標與精神象徵，佇立於風景如畫的情侶中路香爐灣畔。這座高達 8.7 米的巨型花崗岩雕塑由著名雕塑家潘鶴傾心創作，描繪了一位頸戴珍珠、身披漁網、雙手高擎璀璨明珠的美麗漁女。清晨迎著初升海日，或傍晚漫步於香爐灣沙灘遠眺雕像剪影，海風拂面、浪濤陣陣，是感受這座浪漫海濱之城浪漫氣韻的必遊之地。",
+  "guideEn": "The defining emblem and poetic soul of Zhuhai, standing proudly amid the waves along scenic Lovers' Middle Road in Xianglu Bay. Created by celebrated master sculptor Pan He, this 8.7-meter granite masterpiece depicts a graceful maiden draped in a fishing net, holding aloft a gleaming pearl toward the heavens. Whether admiring the sunrise across the horizon or strolling along the golden crescent beach at sunset, it offers an unforgettable encounter with the romantic essence of this coastal city.",
+  "dayImage": "/images/zhuhai-fisher-girl-day.webp",
+  "nightImage": "/images/zhuhai-fisher-girl-night.webp",
+  "coordinates": {
+    "lat": 22.2687,
+    "lng": 113.5855
+  },
+  "companions": [],
+  "guideDetailsZh": [
+    { "label": "門票預約", "value": "免費開放（免預約）" },
+    { "label": "開放時間", "value": "全天開放（室外濱海景點）" },
+    { "label": "建議用時", "value": "0.5 – 1 小時" },
+    { "label": "最佳時段", "value": "清晨日出 / 傍晚晚霞與夜景" },
+    { "label": "地理位置", "value": "香洲區情侶中路香爐灣畔" }
+  ],
+  "guideDetailsEn": [
+    { "label": "Tickets", "value": "Free (No reservation needed)" },
+    { "label": "Hours", "value": "Open all day (Outdoor seaside landmark)" },
+    { "label": "Duration", "value": "0.5 – 1 Hour" },
+    { "label": "Best Time", "value": "Sunrise / Sunset glow & evening lights" },
+    { "label": "Location", "value": "Xianglu Bay, Lovers' Middle Road, Xiangzhou" }
+  ]
+}

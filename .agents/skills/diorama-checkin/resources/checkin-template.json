@@ -1,0 +1,18 @@
+{
+  "date": "YYYY-MM-DD",
+  "dateZh": "今天",
+  "dateEn": "Today",
+  "relZh": "剛剛",
+  "relEn": "just now",
+  "place": "地點名稱",
+  "cityZh": "城市中文名",
+  "cityEn": "City English Name",
+  "preset": "market | cafe | cinema | bistro | park",
+  "dayImage": "/images/{slug}-day.webp",
+  "nightImage": "/images/{slug}-night.webp",
+  "coordinates": {
+    "lat": 0.0,
+    "lng": 0.0
+  },
+  "companions": []
+}

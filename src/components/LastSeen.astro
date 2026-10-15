@@ -1,0 +1,892 @@
+---
+interface Props {
+  items: Array<{
+    id: string;
+    dateZh: string;
+    dateEn: string;
+    relZh: string;
+    relEn: string;
+    place: string;
+    cityZh: string;
+    cityEn: string;
+    preset: string;
+    guideZh?: string;
+    guideEn?: string;
+    dayImage?: string;
+    nightImage?: string;
+    companions: Array<{ name: string; url: string }>;
+    guideDetailsZh?: Array<{ label: string; value: string }>;
+    guideDetailsEn?: Array<{ label: string; value: string }>;
+  }>;
+  lang: "zh" | "en";
+}
+const { items, lang } = Astro.props;
+---
+
+    <!-- 1. 單體聚焦視圖（不顯示“珠海景点”，直接聚焦微縮模型與攻略） -->
+    <div class="single-view-section" id="singleViewSection" style="display: none;">
+      <section class="diorama-stage" id="dioramaStage" title={lang === "zh" ? "點擊切換白天/黑夜亮燈模式" : "Click to toggle day/night lighting"}>
+        <div class="diorama-card" id="dioramaCard">
+          <div class="diorama-layer day-layer" id="dayLayer"></div>
+          <div class="diorama-layer night-layer" id="nightLayer"></div>
+        </div>
+      </section>
+
+      <section class="bio-section" id="bioSection"></section>
+
+      <section class="work-section">
+        <h2 class="section-heading" id="workHeading">{lang === "zh" ? "遊玩指南" : "Travel Guide"}</h2>
+        <ul class="work-list" id="workList"></ul>
+      </section>
+    </div>
+
+    <!-- 2. 全部景點宮格視圖（“珠海景点”標題只出現在本列表頁） -->
+    <section class="gallery-view-section" id="galleryViewSection" style="display: flex;">
+      <div class="gallery-header">
+        <h1 class="gallery-title" id="galleryTitle">{lang === "zh" ? "珠海景点" : "Zhuhai Attractions"}</h1>
+        <p class="gallery-meta-hint" id="galleryMetaHint">
+          <span>{lang === "zh" ? "點擊任意景點查看 3D 微縮模型與遊玩介紹" : "Click any spot to view 3D diorama & travel guide"}</span>
+        </p>
+      </div>
+      <div class="gallery-grid" id="galleryGrid"></div>
+    </section>
+
+
+
+<!-- 左下角固定：全部景點 / 返回 按鈕 (Fixed Pill) -->
+<button class="view-all pill active" id="timelineToggleBtn" type="button" aria-expanded="true" title={lang === "zh" ? "切換全部景點" : "Toggle all spots"}>
+  <span id="timelineBtnLabel">{lang === "zh" ? "返回" : "Back"}</span>
+</button>
+
+<!-- 右下角固定：白天/黑夜 + 語言分體控制膠囊 (Fixed Settings Toolbar Pill) -->
+<div class="settings pill pill-split" id="settingsPill" role="toolbar" aria-label="Theme and language">
+  <button class="theme-toggle" id="themeToggleBtn" type="button" aria-label={lang === "zh" ? "切換白天/黑夜模式" : "Toggle day or night mode"}>
+    <span id="themeBtnLabel">{lang === "zh" ? "黑夜" : "Night"}</span>
+  </button>
+  <a class="lang-toggle" id="langToggleBtn" href={lang === "zh" ? "/" : "/cn"} aria-label={lang === "zh" ? "切換語言" : "Toggle language"}>
+    <span id="langBtnLabel">{lang === "zh" ? "EN" : "中文"}</span>
+  </a>
+</div>
+
+<style>
+  .diorama-stage {
+    position: relative;
+    width: min(33.75rem, 100%); /* 33.75rem = 540px */
+    aspect-ratio: 1;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    perspective: 900px;
+    cursor: pointer;
+  }
+  .diorama-card {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.25s ease-out, opacity 0.28s ease;
+  }
+  .diorama-card.crossfading {
+    opacity: 0;
+    transform: scale(0.96) translateY(4px);
+  }
+  .diorama-layer {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .diorama-layer :global(img.diorama-photo) {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    -webkit-mask-image: radial-gradient(ellipse 68% 66% at 50% 52%, #000 78%, transparent 100%);
+    mask-image: radial-gradient(ellipse 68% 66% at 50% 52%, #000 78%, transparent 100%);
+  }
+  .diorama-layer.day-layer {
+    opacity: var(--day-opacity);
+  }
+  .diorama-layer.night-layer {
+    opacity: var(--night-opacity);
+  }
+
+  .bio-section {
+    color: var(--color-text);
+    font-size: 1.5rem; /* 24px, 參考 pengzhe.ng .caption 字號 */
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: -0.015em;
+    text-align: center;
+    margin-top: 1.25rem;
+    margin-bottom: 4rem;
+  }
+  :global(html[lang="zh-Hant"]) .bio-section,
+  :global(html[lang="zh"]) .bio-section {
+    letter-spacing: normal;
+    line-height: 1.6;
+  }
+  @media (max-width: 640px) {
+    .bio-section {
+      font-size: 1.25rem;
+      margin-bottom: 3rem;
+    }
+  }
+  .bio-section :global(a) {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .bio-section :global(a:hover) {
+    color: var(--color-secondary);
+  }
+
+  .single-view-section {
+    width: 100%;
+    transition: opacity 0.3s ease;
+  }
+
+  /* 全部景點宮格列表視圖 */
+  .gallery-view-section {
+    width: 100%;
+    min-height: 480px;
+    display: none;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0 0 3rem;
+  }
+
+  .gallery-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    width: 100%;
+  }
+
+  .gallery-title {
+    font-size: 1.75rem; /* 28px */
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.015em;
+  }
+
+  .gallery-meta-hint {
+    text-align: center;
+    font-size: 1rem;
+    color: var(--color-secondary);
+    user-select: none;
+    letter-spacing: 0.3px;
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 36px 24px;
+    width: 100%;
+    justify-items: center;
+    padding: 8px 0 32px;
+  }
+
+  @media (max-width: 640px) {
+    .gallery-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px 14px;
+    }
+  }
+
+  .gallery-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 220px;
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+    padding: 10px 8px 16px;
+    border-radius: 16px;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .gallery-card:hover {
+    background-color: rgba(138, 138, 138, 0.08);
+  }
+
+  .gallery-diorama-wrap {
+    width: 200px;
+    height: 160px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .diorama-card.gallery-mini-card {
+    width: 200px;
+    height: 160px;
+    position: relative;
+    transform-style: preserve-3d;
+    cursor: pointer;
+    transition: transform 0.28s cubic-bezier(0.2, 0.9, 0.3, 1);
+  }
+
+  .gallery-card:hover .diorama-card.gallery-mini-card {
+    transform: translateY(-6px) scale(1.03);
+  }
+
+
+
+  .gallery-card-meta {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+  }
+
+  .gallery-card-title {
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: var(--color-text);
+    text-align: center;
+    line-height: 1.35;
+    max-width: 190px;
+    word-break: break-word;
+    transition: color 0.2s ease;
+  }
+
+  .gallery-card-sub,
+  .gallery-card-meta .subtitle {
+    margin-top: 4px;
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: var(--color-secondary);
+    text-align: center;
+    line-height: 1.35;
+    max-width: 190px;
+    word-break: break-word;
+    transition: color 0.2s ease;
+  }
+
+  .gallery-card.active .gallery-card-title {
+    color: var(--color-text);
+    font-weight: 600;
+  }
+
+  .gallery-card.active .gallery-card-sub,
+  .gallery-card.active .subtitle {
+    color: var(--color-text);
+    opacity: 0.85;
+  }
+
+  .gallery-card.active::after {
+    content: "";
+    position: absolute;
+    bottom: 4px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #2fb344;
+    box-shadow: 0 0 8px rgba(47, 179, 68, 0.6);
+  }
+
+
+  /* 懸浮膠囊控制項 (Fixed Corner Controls) */
+  .view-all.pill {
+    position: fixed;
+    bottom: 1.625rem;
+    left: 1.5rem;
+    z-index: 100;
+    padding: 0.375rem 0.875rem;
+    border-radius: 999px;
+    font-size: 1.125rem;
+    line-height: 1.4;
+    font-family: inherit;
+    font-weight: 500;
+    color: var(--color-pill-ink-plain);
+    background: var(--pill-fill);
+    backdrop-filter: var(--pill-blur);
+    -webkit-backdrop-filter: var(--pill-blur);
+    border: 1px solid var(--color-border);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    transition: color 0.2s, background-color 0.2s, transform 0.2s;
+    user-select: none;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+  }
+
+  .view-all.pill:hover {
+    color: var(--color-pill-ink-hover);
+    background: var(--pill-fill-pressed);
+  }
+
+  .settings.pill-split {
+    position: fixed;
+    bottom: 1.625rem;
+    right: 1.5rem;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    background: transparent;
+    user-select: none;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+    border-radius: 999px;
+  }
+
+  .settings.pill-split > button,
+  .settings.pill-split > a {
+    background: var(--pill-fill);
+    backdrop-filter: var(--pill-blur);
+    -webkit-backdrop-filter: var(--pill-blur);
+    border: 1px solid var(--color-border);
+    color: var(--color-pill-ink-plain);
+    font-size: 1.125rem;
+    line-height: 1.4;
+    font-family: inherit;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 0.375rem 0.5rem;
+    width: 4.75rem;
+    box-sizing: border-box;
+    justify-content: center;
+    text-align: center;
+    white-space: nowrap;
+    transition: color 0.2s, background-color 0.2s;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .settings.pill-split > button:first-child,
+  .settings.pill-split > a:first-child {
+    border-radius: 999px 0.25rem 0.25rem 999px;
+  }
+
+  .settings.pill-split > button:last-child,
+  .settings.pill-split > a:last-child {
+    border-radius: 0.25rem 999px 999px 0.25rem;
+  }
+
+  .settings.pill-split > button:hover,
+  .settings.pill-split > a:hover {
+    color: var(--color-pill-ink-hover);
+    background: var(--pill-fill-pressed);
+  }
+
+  @media (max-width: 640px) {
+    .view-all.pill {
+      bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+      left: 1rem;
+      font-size: 1rem;
+      padding: 0.35rem 0.75rem;
+    }
+    .settings.pill-split {
+      bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+      right: 1rem;
+    }
+    .settings.pill-split > button,
+    .settings.pill-split > a {
+      font-size: 1rem;
+      padding: 0.35rem 0.4rem;
+      width: 4.25rem;
+    }
+  }
+
+  /* 連貫飛行動畫浮動元素 (FLIP Morph Ghost) */
+  :global(.morph-ghost-card) {
+    position: fixed;
+    z-index: 9999;
+    pointer-events: none;
+    margin: 0;
+    padding: 0;
+    transform-origin: top left;
+    will-change: transform;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  :global(.morph-ghost-card) .diorama-floor-shadow,
+  :global(.morph-ghost-card) .gallery-card-shadow {
+    display: none !important;
+  }
+</style>
+
+<script define:vars={{ items, lang }}>
+  let activeIndex = items.length - 1;
+  let currentTheme = "light";
+
+  function renderZhuhaiOperaFallbackSVG(isNight) {
+    const baseOuter = isNight ? "#1e2026" : "#4a4d52";
+    const plaza = isNight ? "#5d5a54" : "#d8d5ce";
+    const shell = isNight ? "#9a9da3" : "#e8e8e6";
+    const glass = isNight ? "#f5c26b" : "#89a3b2";
+    return `
+      <svg viewBox="0 0 300 230" width="300" height="230" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="150" cy="158" rx="126" ry="52" fill="${baseOuter}" />
+        <ellipse cx="150" cy="152" rx="120" ry="48" fill="${plaza}" />
+        <!-- 小貝 (Moon Shell) -->
+        <path d="M78 140 C68 86, 94 52, 108 46 C100 78, 102 116, 108 140 Z" fill="${shell}" />
+        <path d="M90 140 C90 92, 108 66, 118 66 C126 92, 124 120, 116 140 Z" fill="${glass}" />
+        <path d="M108 144 C112 88, 122 54, 134 50 C146 84, 140 122, 126 144 Z" fill="${shell}" />
+        <!-- 大貝 (Sun Shell) -->
+        <path d="M156 148 C144 74, 178 26, 202 20 C186 64, 184 114, 190 148 Z" fill="${shell}" />
+        <path d="M168 148 C168 84, 194 46, 212 46 C220 84, 214 122, 202 148 Z" fill="${glass}" />
+        <path d="M192 152 C194 78, 216 32, 236 28 C256 72, 248 126, 224 152 Z" fill="${shell}" />
+      </svg>
+    `;
+  }
+
+  function renderClayDioramaSVG(preset, isNight, placeName = "") {
+    if (placeName.includes("日月貝") || placeName.includes("大劇院") || placeName.includes("大剧院") || placeName.toLowerCase().includes("grand theater")) {
+      return renderZhuhaiOperaFallbackSVG(isNight);
+    }
+    const baseColor = isNight ? "#2b2b30" : "#e6dfd5";
+    const baseRim = isNight ? "#1f1f24" : "#d0c7ba";
+    const winFill = isNight ? "#ffbe55" : "#6c7d87";
+    const wall = isNight ? "#3b322e" : "#edd8c4";
+    const roof = isNight ? "#4a2c24" : "#a85743";
+    return `
+      <svg viewBox="0 0 260 210" width="260" height="210" xmlns="http://www.w3.org/2000/svg">
+        <rect x="28" y="158" width="204" height="18" rx="9" fill="${baseColor}" stroke="${baseRim}" stroke-width="2"/>
+        <rect x="52" y="54" width="156" height="106" rx="11" fill="${wall}" />
+        <rect x="48" y="46" width="164" height="14" rx="7" fill="${roof}" />
+        <rect x="68" y="96" width="34" height="52" rx="17" fill="${winFill}" />
+        <rect x="113" y="96" width="34" height="62" rx="17" fill="${winFill}" />
+        <rect x="158" y="96" width="34" height="52" rx="17" fill="${winFill}" />
+      </svg>
+    `;
+  }
+
+  function updateView(crossfade = false) {
+    const item = items[activeIndex];
+    const card = document.getElementById("dioramaCard");
+    const dayLayer = document.getElementById("dayLayer");
+    const nightLayer = document.getElementById("nightLayer");
+    const bioSection = document.getElementById("bioSection");
+
+    const applyVisuals = () => {
+      dayLayer.innerHTML = getDioramaLayerContent(item, false);
+      nightLayer.innerHTML = getDioramaLayerContent(item, true);
+      setupFallback(dayLayer, item.dayImage, item.preset, item.place, false);
+      setupFallback(nightLayer, item.nightImage, item.preset, item.place, true);
+    };
+
+    if (crossfade && card) {
+      card.classList.add("crossfading");
+      setTimeout(() => {
+        applyVisuals();
+        card.classList.remove("crossfading");
+      }, 160);
+    } else {
+      applyVisuals();
+    }
+
+    const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.place + " " + item.cityEn)}`;
+    if (lang === "zh") {
+      bioSection.innerHTML = `<a href="${mapUrl}" target="_blank" rel="noopener"><strong>${item.place}</strong></a>：${item.guideZh || ""}`;
+    } else {
+      bioSection.innerHTML = `<a href="${mapUrl}" target="_blank" rel="noopener"><strong>${item.place}</strong></a>: ${item.guideEn || ""}`;
+    }
+
+    const details = lang === "zh" ? (item.guideDetailsZh || []) : (item.guideDetailsEn || []);
+    const workHeading = document.getElementById("workHeading");
+    if (workHeading) workHeading.textContent = lang === "zh" ? "遊玩指南" : "Travel Guide";
+
+    const workList = document.getElementById("workList");
+    if (workList) {
+      workList.innerHTML = details.map(d => {
+        const isLocation = d.label === "地理位置" || d.label === "Location";
+        const valueHtml = isLocation
+          ? `<a href="${mapUrl}" target="_blank" rel="noopener" title="${lang === "zh" ? "在地圖中查看" : "View on Map"}">${d.value} ↗</a>`
+          : d.value;
+        return `
+          <li class="work-item">
+            <span class="guide-label">${d.label}</span>
+            <span class="guide-value">${valueHtml}</span>
+          </li>
+        `;
+      }).join("");
+    }
+  }
+
+  function getDioramaLayerContent(item, isNight) {
+    if (item.dayImage && item.nightImage) {
+      const src = isNight ? item.nightImage : item.dayImage;
+      const fallback = src.startsWith("public/") ? src.replace(/^public\//, "") : "public/" + src.replace(/^\//, "");
+      return `<img class="diorama-photo" src="${src}" alt="${item.place} ${isNight ? '(Night)' : '(Day)'}" onerror="if(!this.dataset.fallback){this.dataset.fallback='1';this.src='${fallback}';}" />`;
+    }
+    return renderClayDioramaSVG(item.preset, isNight, item.place);
+  }
+
+  function setupFallback(layerEl, initialSrc, preset, placeName, isNight) {
+    const imgEl = layerEl?.querySelector("img");
+    if (!imgEl || !initialSrc) return;
+    const candidates = [
+      initialSrc,
+      initialSrc.startsWith("/") ? initialSrc.slice(1) : "/" + initialSrc,
+      initialSrc.startsWith("/images/") ? "public" + initialSrc : ("public/" + initialSrc).replace("//", "/"),
+      initialSrc.replace(/\.webp$/i, ".png"),
+      initialSrc.replace(/\.webp$/i, ".jpeg")
+    ].filter((val, idx, arr) => arr.indexOf(val) === idx);
+    let attempt = 0;
+    imgEl.onerror = () => {
+      attempt++;
+      if (attempt < candidates.length) {
+        imgEl.src = candidates[attempt];
+      } else {
+        layerEl.innerHTML = renderClayDioramaSVG(preset, isNight, placeName);
+      }
+    };
+  }
+
+  let isGalleryMode = true;
+  let isMorphing = false;
+
+  function getPlaceNameParts(item, currentLang) {
+    const isZh = currentLang === "zh";
+    const explicitTitle = isZh ? item.titleZh : (item.titleEn || item.titleZh);
+    const explicitSub = isZh ? item.subZh : (item.subEn ?? item.subZh);
+    if (explicitTitle !== undefined) {
+      return {
+        title: explicitTitle,
+        sub: explicitSub || ""
+      };
+    }
+    const raw = isZh ? item.place : (item.placeEn || item.place);
+    const match = (raw || "").match(/^(.*?)[（\(](.+?)[）\)](.*)$/);
+    if (match) {
+      return {
+        title: (match[1] + match[3]).trim(),
+        sub: match[2].trim()
+      };
+    }
+    return { title: raw || "", sub: "" };
+  }
+
+  function renderGallery() {
+    const grid = document.getElementById("galleryGrid");
+    if (!grid) return;
+    grid.innerHTML = "";
+
+    items.forEach((c, idx) => {
+      const card = document.createElement("div");
+      card.className = "gallery-card" + (idx === activeIndex ? " active" : "");
+      card.setAttribute("data-idx", idx);
+      const { title, sub } = getPlaceNameParts(c, lang);
+      card.innerHTML = `
+        <div class="gallery-diorama-wrap">
+          <div class="diorama-card gallery-mini-card">
+            <div class="diorama-layer day-layer">
+              ${getDioramaLayerContent(c, false)}
+            </div>
+            <div class="diorama-layer night-layer">
+              ${getDioramaLayerContent(c, true)}
+            </div>
+          </div>
+        </div>
+        <div class="gallery-card-meta">
+          <div class="gallery-card-title">${title}</div>
+          ${sub ? `<div class="gallery-card-sub subtitle">${sub}</div>` : ""}
+        </div>
+      `;
+
+      const dLayer = card.querySelector(".gallery-mini-card .day-layer");
+      const nLayer = card.querySelector(".gallery-mini-card .night-layer");
+      setupFallback(dLayer, c.dayImage, c.preset, c.place, false);
+      setupFallback(nLayer, c.nightImage, c.preset, c.place, true);
+
+      card.onclick = () => {
+        if (isMorphing) return;
+        closeGallery(idx);
+      };
+      grid.appendChild(card);
+    });
+  }
+
+  function toggleTimelineGallery() {
+    if (isMorphing) return;
+    if (!isGalleryMode) {
+      openGallery();
+    } else {
+      closeGallery(activeIndex);
+    }
+  }
+
+  function openGallery() {
+    if (isMorphing) return;
+    isMorphing = true;
+    isGalleryMode = true;
+
+    const dioramaCard = document.getElementById("dioramaCard");
+    const container = document.querySelector(".container");
+    const singleView = document.getElementById("singleViewSection");
+    const galleryView = document.getElementById("galleryViewSection");
+    const toggleBtn = document.getElementById("timelineToggleBtn");
+
+    if (!dioramaCard || !singleView || !galleryView) return;
+
+    // 1. First: 測量當前單體舞台卡片在 Viewport 的幾何位置
+    const firstRect = dioramaCard.getBoundingClientRect();
+
+    // 2. 建立浮動 Morph Ghost (Stage 卡片的精確深拷貝)
+    const ghost = dioramaCard.cloneNode(true);
+    ghost.id = "morphGhost";
+    ghost.className = "morph-ghost-card";
+    ghost.style.position = "fixed";
+    ghost.style.transformOrigin = "top left";
+    ghost.style.margin = "0";
+    ghost.style.pointerEvents = "none";
+    ghost.style.zIndex = "9999";
+    ghost.style.willChange = "transform";
+    ghost.style.transition = "none";
+
+    // 3. 更新按鈕狀態
+    toggleBtn?.classList.add("active");
+    toggleBtn?.setAttribute("aria-expanded", "true");
+    const btnSpan = document.getElementById("timelineBtnLabel") || toggleBtn?.querySelector("span:not(.dot)");
+    if (btnSpan) btnSpan.textContent = lang === "zh" ? "返回" : "Back";
+
+    // 4. 同步切換 DOM 佈局至畫廊視圖
+    singleView.style.display = "none";
+    container?.classList.add("gallery-mode");
+    galleryView.style.display = "flex";
+    renderGallery();
+
+    // 5. 定位當前景點卡片
+    const grid = document.getElementById("galleryGrid");
+    const targetCard = grid?.children[activeIndex] || grid?.children[0];
+    const targetMini = targetCard?.querySelector(".gallery-mini-card");
+
+    targetCard?.scrollIntoView({ behavior: "auto", block: "nearest" });
+
+    if (!targetMini) {
+      isMorphing = false;
+      return;
+    }
+
+    // 6. Last: 測量目標卡片在最終穩定佈局中的精確幾何位置
+    const lastRect = targetMini.getBoundingClientRect();
+    targetMini.style.visibility = "hidden";
+
+    // 暫時隱藏畫廊其他卡片以進行平滑交錯浮現
+    if (grid) {
+      Array.from(grid.children).forEach((c, idx) => {
+        if (idx !== activeIndex) {
+          c.style.opacity = "0";
+          c.style.transform = "translateY(14px)";
+          c.style.transition = "none";
+        }
+      });
+    }
+
+    // 7. Invert: 將 Ghost 放置在 lastRect，並用 Transform 反轉回 firstRect 視覺起點
+    ghost.style.left = `${lastRect.left}px`;
+    ghost.style.top = `${lastRect.top}px`;
+    ghost.style.width = `${lastRect.width}px`;
+    ghost.style.height = `${lastRect.height}px`;
+
+    const dx = firstRect.left - lastRect.left;
+    const dy = firstRect.top - lastRect.top;
+    const sx = firstRect.width / lastRect.width;
+    const sy = firstRect.height / lastRect.height;
+
+    ghost.style.transform = `translate(${dx}px, ${dy}px) scale(${sx}, ${sy})`;
+    document.body.appendChild(ghost);
+
+    // 強制觸發重排
+    ghost.getBoundingClientRect();
+
+    // 8. Play: 啟動 GPU 加速平滑飛行插值，並交錯淡入相鄰卡片
+    requestAnimationFrame(() => {
+      ghost.style.transition = "transform 0.42s cubic-bezier(0.2, 0.9, 0.3, 1)";
+      ghost.style.transform = "translate(0px, 0px) scale(1, 1)";
+
+      if (grid) {
+        Array.from(grid.children).forEach((c, idx) => {
+          if (idx !== activeIndex) {
+            const delay = 50 + Math.min(Math.abs(idx - activeIndex) * 30, 180);
+            c.style.transition = `opacity 0.32s ease ${delay}ms, transform 0.32s cubic-bezier(0.2, 0.9, 0.3, 1) ${delay}ms`;
+            c.style.opacity = "1";
+            c.style.transform = "translateY(0)";
+          }
+        });
+      }
+    });
+
+    // 9. 動畫平滑結束，無縫替換目標卡片
+    setTimeout(() => {
+      targetMini.style.visibility = "visible";
+      if (ghost.parentNode) ghost.parentNode.removeChild(ghost);
+      isMorphing = false;
+    }, 440);
+  }
+
+  function closeGallery(targetIdx) {
+    if (isMorphing) return;
+    isMorphing = true;
+    isGalleryMode = false;
+
+    const dioramaCard = document.getElementById("dioramaCard");
+    const container = document.querySelector(".container");
+    const singleView = document.getElementById("singleViewSection");
+    const galleryView = document.getElementById("galleryViewSection");
+    const toggleBtn = document.getElementById("timelineToggleBtn");
+    const grid = document.getElementById("galleryGrid");
+
+    if (!dioramaCard || !singleView || !galleryView || !grid) return;
+
+    // 1. First: 測量被點選卡片在畫廊中的精確幾何位置
+    const sourceCard = grid.children[targetIdx] || grid.children[0];
+    const sourceMini = sourceCard?.querySelector(".gallery-mini-card");
+    if (!sourceMini) {
+      isMorphing = false;
+      return;
+    }
+    const firstRect = sourceMini.getBoundingClientRect();
+
+    // 2. 建立浮動 Morph Ghost (從點擊卡片起飛)
+    const ghost = sourceMini.cloneNode(true);
+    ghost.id = "morphGhost";
+    ghost.className = "morph-ghost-card";
+    ghost.style.position = "fixed";
+    ghost.style.transformOrigin = "top left";
+    ghost.style.margin = "0";
+    ghost.style.pointerEvents = "none";
+    ghost.style.zIndex = "9999";
+    ghost.style.willChange = "transform";
+    ghost.style.transition = "none";
+
+    sourceMini.style.visibility = "hidden";
+
+    // 畫廊中其他卡片快速淡出
+    Array.from(grid.children).forEach((c, idx) => {
+      if (idx !== targetIdx) {
+        c.style.transition = "opacity 0.18s ease, transform 0.18s ease";
+        c.style.opacity = "0";
+        c.style.transform = "translateY(10px)";
+      }
+    });
+
+    // 3. 同步切換 DOM 佈局至單體聚焦視圖
+    activeIndex = targetIdx;
+    toggleBtn?.classList.remove("active");
+    toggleBtn?.setAttribute("aria-expanded", "false");
+    const btnSpan = document.getElementById("timelineBtnLabel") || toggleBtn?.querySelector("span:not(.dot)");
+    if (btnSpan) btnSpan.textContent = lang === "zh" ? "全部景點" : "All Spots";
+
+    galleryView.style.display = "none";
+    container?.classList.remove("gallery-mode");
+    singleView.style.display = "block";
+    singleView.style.opacity = "0";
+
+    // 更新聚焦舞台建築與相關文案
+    updateView(false);
+
+    // 隱藏舞台卡片，等待 Ghost 飛回精確落點
+    dioramaCard.style.visibility = "hidden";
+
+    // 4. Last: 測量單體舞台卡片在最終佈局中的幾何位置
+    const lastRect = dioramaCard.getBoundingClientRect();
+
+    // 5. Invert: 將 Ghost 放置在 lastRect，並反轉回 firstRect 視覺起點
+    ghost.style.left = `${lastRect.left}px`;
+    ghost.style.top = `${lastRect.top}px`;
+    ghost.style.width = `${lastRect.width}px`;
+    ghost.style.height = `${lastRect.height}px`;
+
+    const dx = firstRect.left - lastRect.left;
+    const dy = firstRect.top - lastRect.top;
+    const sx = firstRect.width / lastRect.width;
+    const sy = firstRect.height / lastRect.height;
+
+    ghost.style.transform = `translate(${dx}px, ${dy}px) scale(${sx}, ${sy})`;
+    document.body.appendChild(ghost);
+
+    // 強制觸發重排
+    ghost.getBoundingClientRect();
+
+    // 6. Play: 啟動平滑回飛插值與單體視圖浮現
+    requestAnimationFrame(() => {
+      ghost.style.transition = "transform 0.42s cubic-bezier(0.2, 0.9, 0.3, 1)";
+      ghost.style.transform = "translate(0px, 0px) scale(1, 1)";
+
+      singleView.style.transition = "opacity 0.35s ease 0.05s";
+      singleView.style.opacity = "1";
+    });
+
+    // 7. 動畫平滑結束，無縫交接給舞台卡片
+    setTimeout(() => {
+      dioramaCard.style.visibility = "visible";
+      sourceMini.style.visibility = "visible";
+      if (ghost.parentNode) ghost.parentNode.removeChild(ghost);
+      isMorphing = false;
+    }, 440);
+  }
+
+  document.getElementById("timelineToggleBtn")?.addEventListener("click", toggleTimelineGallery);
+
+  function toggleTheme() {
+    currentTheme = currentTheme === "light" ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", currentTheme);
+    const themeLabel = document.getElementById("themeBtnLabel");
+    const themeText = lang === "zh" ? (currentTheme === "light" ? "黑夜" : "白天") : (currentTheme === "light" ? "Night" : "Day");
+    if (themeLabel) {
+      themeLabel.textContent = themeText;
+    } else {
+      const btn = document.getElementById("themeToggleBtn");
+      if (btn) btn.textContent = themeText;
+    }
+    updateView(false);
+  }
+
+  document.getElementById("themeToggleBtn")?.addEventListener("click", toggleTheme);
+  document.getElementById("dioramaStage")?.addEventListener("click", toggleTheme);
+
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && isGalleryMode) {
+      closeGallery(activeIndex);
+    } else if (e.key === "ArrowLeft") {
+      if (!isGalleryMode && activeIndex > 0) {
+        activeIndex--;
+        updateView(true);
+      } else if (isGalleryMode && activeIndex > 0) {
+        activeIndex--;
+        renderGallery();
+        const targetCard = document.getElementById("galleryGrid")?.children[activeIndex];
+        targetCard?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      }
+    } else if (e.key === "ArrowRight") {
+      if (!isGalleryMode && activeIndex < items.length - 1) {
+        activeIndex++;
+        updateView(true);
+      } else if (isGalleryMode && activeIndex < items.length - 1) {
+        activeIndex++;
+        renderGallery();
+        const targetCard = document.getElementById("galleryGrid")?.children[activeIndex];
+        targetCard?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      }
+    }
+  });
+
+  // 頁面初始化（默認展示全部景點畫廊列表）
+  updateView(false);
+  renderGallery();
+  const initToggleBtn = document.getElementById("timelineToggleBtn");
+  if (initToggleBtn) {
+    initToggleBtn.classList.add("active");
+    initToggleBtn.setAttribute("aria-expanded", "true");
+    const btnSpan = document.getElementById("timelineBtnLabel") || initToggleBtn.querySelector("span:not(.dot)");
+    if (btnSpan) btnSpan.textContent = lang === "zh" ? "返回" : "Back";
+  }
+</script>

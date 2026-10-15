@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-19",
+  "dateZh": "10月19日",
+  "dateEn": "Oct 19",
+  "relZh": "10月19日",
+  "relEn": "on Oct 19",
+  "place": "香山湖公園",
+  "titleZh": "香山湖公園",
+  "subZh": "",
+  "titleEn": "Xiangshan Lake Park",
+  "subEn": "",
+  "cityZh": "珠海",
+  "cityEn": "Zhuhai",
+  "preset": "park",
+  "guideZh": "坐落於鳳凰山森林公園南麓，依山傍水、步移景異，是珠海最具代表性的嶺南傳統園林與現代生態湖泊公園。古色古香的入口青瓦木廊、環湖慢行步道、曲橋水榭與黑天鵝群相映成趣。夜幕降臨後，仿古亭廊燈火闌珊，湖面波光倒影、流光溢彩，兼具自然山水之幽與江南園林之秀，是市民與遊客登山吸氧、漫步野餐的城市綠洲。",
+  "guideEn": "Nestled at the southern foot of Fenghuang Mountain, Xiangshan Lake Park blends classical Cantonese garden architecture with pristine lake ecology. Characterized by traditional grey-tiled pavilions, waterside boardwalks, arched stone bridges, and resident black swans gliding across the water, the park transforms after dusk as warm lanterns illuminate the wooden corridors, casting luminous reflections upon the tranquil lake.",
+  "dayImage": "/images/xiangshan-lake-park-day.webp",
+  "nightImage": "/images/xiangshan-lake-park-night.webp",
+  "coordinates": {
+    "lat": 22.2858,
+    "lng": 113.5284
+  },
+  "companions": [],
+  "guideDetailsZh": [
+    { "label": "門票預約", "value": "免費入園（免預約）" },
+    { "label": "開放時間", "value": "06:00 – 22:30（全天候開放）" },
+    { "label": "建議用時", "value": "2 – 3 小時" },
+    { "label": "最佳時段", "value": "清晨吸氧觀鳥 / 傍晚湖畔散步賞夜景" },
+    { "label": "地理位置", "value": "香洲區健民路健民一路交叉口西南" }
+  ],
+  "guideDetailsEn": [
+    { "label": "Tickets", "value": "Free admission (No reservation needed)" },
+    { "label": "Hours", "value": "06:00 – 22:30 (Open daily)" },
+    { "label": "Duration", "value": "2 – 3 Hours" },
+    { "label": "Best Time", "value": "Early morning walk / Sunset & evening lights" },
+    { "label": "Location", "value": "Jianmin Road, Xiangzhou, Zhuhai" }
+  ]
+}

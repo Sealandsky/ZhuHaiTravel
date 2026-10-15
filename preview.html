@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>個人主頁 · 珠海大劇院（日月貝）白/夜雙模預覽</title>
+  <!-- 模塊化樣式表 -->
+  <link rel="stylesheet" href="preview/css/style.css" />
+</head>
+<body>
+
+  <!-- 主體佈局容器 -->
+  <main class="container gallery-mode" id="mainContainer">
+    <!-- 1. 單體聚焦視圖（不顯示“珠海景点”，直接聚焦微縮模型與攻略） -->
+    <div class="single-view-section" id="singleViewSection" style="display: none;">
+      <section class="diorama-stage" id="dioramaStage" title="點擊切換白天/黑夜亮燈效果">
+        <div class="diorama-card" id="dioramaCard">
+          <div class="diorama-layer day-layer" id="dayLayer"></div>
+          <div class="diorama-layer night-layer" id="nightLayer"></div>
+        </div>
+      </section>
+
+      <section class="bio-section" id="bioSection"></section>
+
+      <section class="work-section">
+        <h2 class="section-heading" id="workHeading">遊玩指南</h2>
+        <ul class="work-list" id="workList"></ul>
+      </section>
+    </div>
+
+    <!-- 2. 全部景點宮格視圖（“珠海景点”標題只出現在本列表頁） -->
+    <section class="gallery-view-section" id="galleryViewSection" style="display: flex;">
+      <div class="gallery-header">
+        <h1 class="gallery-title" id="galleryTitle">珠海景点</h1>
+        <p class="gallery-meta-hint" id="galleryMetaHint">
+          <span>點擊任意景點查看 3D 微縮模型與遊玩介紹</span>
+        </p>
+      </div>
+      <div class="gallery-grid" id="galleryGrid"></div>
+    </section>
+
+  </main>
+
+  <!-- 左下角固定：全部景點 / 返回 按鈕 (Fixed Pill) -->
+  <button class="view-all pill active" id="timelineToggleBtn" type="button" aria-expanded="true" title="切換全部景點">
+    <span id="timelineBtnLabel">返回</span>
+  </button>
+
+  <!-- 右下角固定：白天/黑夜 + 語言分體控制膠囊 (Fixed Settings Toolbar Pill) -->
+  <div class="settings pill pill-split" id="settingsPill" role="toolbar" aria-label="Theme and language">
+    <button class="theme-toggle" id="themeToggleBtn" type="button" aria-label="切換白天/黑夜模式">
+      <span id="themeBtnLabel">黑夜</span>
+    </button>
+    <button class="lang-toggle" id="langToggleBtn" type="button" aria-label="切換語言">
+      <span id="langBtnLabel">EN</span>
+    </button>
+  </div>
+
+
+  <!-- 模塊化腳本引入：數據 -> SVG生成 -> 應用邏輯 -->
+  <script src="preview/js/data.js"></script>
+  <script src="preview/js/diorama-svg.js"></script>
+  <script src="preview/js/app.js"></script>
+</body>
+</html>

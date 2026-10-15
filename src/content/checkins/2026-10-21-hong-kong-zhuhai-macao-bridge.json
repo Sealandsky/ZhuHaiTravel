@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-21",
+  "dateZh": "10月21日",
+  "dateEn": "Oct 21",
+  "relZh": "10月21日",
+  "relEn": "on Oct 21",
+  "place": "港珠澳大橋（中國結雙塔）",
+  "titleZh": "港珠澳大橋",
+  "subZh": "中國結雙塔",
+  "titleEn": "Hong Kong-Zhuhai-Macao Bridge",
+  "subEn": "Chinese Knot Towers",
+  "cityZh": "珠海",
+  "cityEn": "Zhuhai",
+  "preset": "bridge",
+  "guideZh": "橫跨伶仃洋的世紀超級工程，青州航道橋作為大橋跨度最大、主塔最高的通航斜拉橋，巍然矗立著兩座高達 163 米的 H 型巨型鋼索塔。塔頂優雅鑲嵌著重達數百噸的「中國結」互鎖鋼結構撐架，將傳統中華文化符號與現代頂尖橋樑工程力學完美交融，象徵粵港澳三地心手相連、珠聯璧合。乘船出海穿行於伶仃洋上，仰望雙索面如琴弦般於碧海藍天間舒展，夜幕降臨後流光溢彩，宛若一條璀璨游龍飛架三地，展現出無與倫比的宏偉與浪漫。",
+  "guideEn": "A world-class engineering marvel spanning the Lingdingyang waters, the Qingzhou Channel Bridge boasts the longest span and tallest pylons of the Hong Kong-Zhuhai-Macao Bridge, crowned by two majestic 163-meter steel towers. Embedded atop each pylon is the iconic 'Chinese Knot' steel brace, seamlessly fusing traditional cultural iconography with modern bridge engineering to symbolize unity between Hong Kong, Zhuhai, and Macao. Greeted by harp-like stay cables stretching across the azure sea by day and illuminated by luminous floodlights at night, the bridge stands as a breathtaking testament to human ingenuity and coastal elegance.",
+  "dayImage": "/images/hong-kong-zhuhai-macao-bridge-day.webp",
+  "nightImage": "/images/hong-kong-zhuhai-macao-bridge-night.webp",
+  "coordinates": {
+    "lat": 22.2575,
+    "lng": 113.7258
+  },
+  "companions": [],
+  "guideDetailsZh": [
+    { "label": "門票預約", "value": "出海觀光免簽注 / 穿梭巴士需有效簽注" },
+    { "label": "開放時間", "value": "大橋全天通車；觀光遊船 09:00 – 19:30" },
+    { "label": "建議用時", "value": "1.5 – 2.5 小時（遊船觀光航程）" },
+    { "label": "最佳時段", "value": "日落黃昏（17:30–18:30）及夜間景觀亮燈" },
+    { "label": "地理位置", "value": "珠海公路口岸 / 九洲港客運碼頭觀光航線" }
+  ],
+  "guideDetailsEn": [
+    { "label": "Tickets", "value": "No visa for sightseeing cruise / Visa required for shuttle bus" },
+    { "label": "Hours", "value": "Bridge open 24/7; Sightseeing cruises 09:00 – 19:30" },
+    { "label": "Duration", "value": "1.5 – 2.5 Hours" },
+    { "label": "Best Time", "value": "Golden sunset (17:30–18:30) & evening illumination" },
+    { "label": "Location", "value": "Zhuhai Port / Jiuzhou Port Sightseeing Cruise Terminal" }
+  ]
+}

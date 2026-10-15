@@ -1,0 +1,14 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import LastSeen from "../../components/LastSeen.astro";
+
+const rawCheckins = await getCollection("checkins");
+const items = rawCheckins
+  .map((entry) => ({ id: entry.id, ...entry.data }))
+  .sort((a, b) => a.date.localeCompare(b.date));
+---
+
+<BaseLayout title="鄭芃" lang="zh">
+  <LastSeen items={items} lang="zh" />
+</BaseLayout>

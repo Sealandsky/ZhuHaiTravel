@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-23",
+  "dateZh": "10月23日",
+  "dateEn": "Oct 23",
+  "relZh": "10月23日",
+  "relEn": "on Oct 23",
+  "place": "金灣市民藝術中心（扎哈·候鳥羽翼）",
+  "titleZh": "金灣市民藝術中心",
+  "subZh": "扎哈·候鳥羽翼",
+  "titleEn": "Jinwan Civic Art Centre",
+  "subEn": "Zaha Hadid Avian Canopy",
+  "cityZh": "珠海",
+  "cityEn": "Zhuhai",
+  "preset": "culture",
+  "guideZh": "由世界頂級建築大師扎哈·哈迪德建築事務所傾力操刀，坐落於金灣航空新城中心湖畔，是珠海當代建築美學的顛峰之作。整座建築以珠海南飛候鳥的「人字形」飛行編隊為靈感，大膽採用輕盈起伏的鋼網格冠狀流線頂棚，將大劇院、多功能廳、科技館與藝術館四大文化場館有機串聯於湖水中央。純白色的穿孔鋁板與水晶切割般的曲面玻璃幕牆倒映在碧波蕩漾的湖面之上，宛如展翅欲飛的銀白候鳥。夜晚星空燈帶與室內暖金燈光交織亮起，如夢如幻，被譽為大灣區西岸最閃耀的文化地標。",
+  "guideEn": "Designed by the renowned Zaha Hadid Architects and set within the Central Lake of Jinwan Aviation New Town, this architectural icon is inspired by the chevron flight formation of migratory birds soaring across Southern China. A dynamic, undulating canopy of perforated steel and crystal glass weaves together four premier venues: the Grand Theater, Multifunctional Hall, Science Center, and Art Museum. Resembling a monumental white avian sculpture gracefully resting above azure waters, the building radiates ethereal beauty both in broad daylight and under its shimmering golden nocturnal illumination.",
+  "dayImage": "/images/jinwan-art-centre-day.webp",
+  "nightImage": "/images/jinwan-art-centre-night.webp",
+  "coordinates": {
+    "lat": 22.1332,
+    "lng": 113.3601
+  },
+  "companions": [],
+  "guideDetailsZh": [
+    { "label": "門票預約", "value": "公共區域免費開放 / 演出與特展需購票" },
+    { "label": "開放時間", "value": "園區全天開放；場館 09:30 – 17:30（週一閉館）" },
+    { "label": "建議用時", "value": "2 – 3 小時（建築打卡與展覽參觀）" },
+    { "label": "最佳時段", "value": "傍晚 17:30 欣賞日落天光與水景燈光秀" },
+    { "label": "地理位置", "value": "珠海市金灣區三灶鎮航空新城中心湖公園" }
+  ],
+  "guideDetailsEn": [
+    { "label": "Tickets", "value": "Free public access / Tickets required for performances" },
+    { "label": "Hours", "value": "Plaza 24/7; Venues 09:30 – 17:30 (Closed Mondays)" },
+    { "label": "Duration", "value": "2 – 3 Hours" },
+    { "label": "Best Time", "value": "Sunset (17:30) for architectural reflections and night illumination" },
+    { "label": "Location", "value": "Central Lake Park, Aviation New Town, Jinwan, Zhuhai" }
+  ]
+}
